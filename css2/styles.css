@@ -1,0 +1,82 @@
+/* Commented out existing li styles */
+/* li {
+    color: blue;
+    font-size: 16px;
+} */
+/* styles.css */
+
+/* Body Styles */
+body {
+  font-family: Arial, sans-serif; /* Modify font family */
+  font-size: 16px; /* Modify font size */
+  padding-bottom: 500px;
+}
+
+/* Header Styles */
+header {
+  background-color: #4CAF50; /* Modify background color */
+}
+
+/* Navigation Styles */
+nav {
+  background-color: #333; /* Modify background color */
+}
+
+/* Main Content Styles */
+main {
+  background-color: #f4f4f4; /* Modify background color */
+  font-size: 18px; /* Modify font size */
+}
+
+/* Footer Styles */
+footer {
+  background-color: #222; /* Modify background color */
+  color: white; /* Optional: Modify text color */
+}
+
+/* List Item Styles */
+li {
+  display: inline-block; /* Modify display property */
+  width: 200px; /* Modify width property */
+}
+
+/* Heading Styles */
+h1 {
+  text-align: center; /* Modify text alignment */
+  font-family: 'Georgia', serif; /* Modify font family */
+  color: #2c3e50; /* Modify text color */
+}
+
+/* Paragraph Styles */
+p {
+  line-height: 1.5; /* Modify line height */
+}
+
+nav {
+  display: inline-block;
+  width: 80%;
+}
+
+nav img {
+  width: 10%; /* Adjust if you have images in the nav */
+}
+
+/* Adding styles for the grid class */
+.grid {
+  display: grid;
+  grid-template-columns: 40% 40%;
+  justify-content: center; /* Adjust as needed */
+  align-items: start; /* Adjust as needed */
+  row-gap: 20px; /* Adjust as needed */
+}
+
+.grid img {
+  width: 100%; /* Style for images in the grid */
+}
+
+/* Adding styles for the flex class */
+.flex {
+  display: flex;
+  flex-wrap: wrap; /* Adjust as needed */
+  justify-content: space-between; /* Adjust as needed */
+}
