@@ -1,0 +1,106 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Ensures padding and border are included in total width and height */
+}
+
+/* Skip to Main Content Link */
+.skip-link {
+  position: absolute;
+  left: -9999px; /* Hide off-screen */
+  background-color: yellow;
+  padding: 10px;
+  border: 1px solid black;
+  z-index: 1000; /* Make sure it is above other elements */
+}
+
+.skip-link:focus {
+  left: 0; /* Bring back into view when focused */
+}
+
+/* Body */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+/* Navigation Styles */
+nav {
+  background-color: #333;
+  padding: 10px;
+}
+
+nav ul {
+  display: flex; /* Use Flexbox for navigation */
+  list-style: none;
+  justify-content: space-around;
+}
+
+nav li {
+  flex: 1; /* Make list items flexible */
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  transition: background-color 0.3s; /* Smooth transition for hover */
+}
+
+nav a:hover {
+  background-color: darkblue; /* Change color on hover */
+}
+
+/* Main Content */
+#main-content {
+  padding: 20px;
+}
+
+/* Image Styling */
+img {
+  border: 2px solid black;
+  padding: 10px;
+  border-radius: 10px; /* Rounded corners */
+  width: 100%; /* Responsive images */
+}
+
+/* Grid Layout for Gallery */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Responsive grid */
+  gap: 10px; /* Space between grid items */
+  padding: 20px;
+}
+
+/* Flexbox for Image Container */
+.image-container {
+  display: flex;
+  justify-content: space-around; /* Align images */
+  flex-wrap: wrap; /* Allow wrapping */
+}
+
+/* nth-child Selector for Styling Every Other Image */
+img:nth-child(even) {
+  border-radius: 50%; /* Make every second image circular */
+}
+
+/* Additional Styles */
+h1 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+p {
+  margin-bottom: 20px;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 768px) {
+  nav ul {
+      flex-direction: column; /* Stack navigation items on smaller screens */
+  }
+  img {
+      width: 100%; /* Ensure images are responsive */
+  }
+}
