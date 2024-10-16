@@ -1,2 +1,2 @@
-# css3-A1
-Get the basics of css 
+# WEB DEVELOPMENT
+Get the basics of html,css,js
