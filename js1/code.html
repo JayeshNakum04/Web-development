@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Hover Preview</title>
+    <style>
+        #image {
+            background-color: #8e68ff;
+            height: 300px;
+            width: 400px;
+            text-align: center;
+            line-height: 300px;
+            color: white;
+            font-size: 20px;
+            background-size: cover;
+        }
+
+        .preview {
+            height: 100px;
+            width: 100px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="image">
+        Hover over an image below to display here.
+    </div>
+
+    <br>
+
+    <img class="preview" src="https://via.placeholder.com/100" alt="Image 1" onmouseover="upDate(this)" onmouseout="undo()">
+    <img class="preview" src="https://via.placeholder.com/100/ff0000" alt="Image 2" onmouseover="upDate(this)" onmouseout="undo()">
+    <img class="preview" src="https://via.placeholder.com/100/00ff00" alt="Image 3" onmouseover="upDate(this)" onmouseout="undo()">
+    <img class="preview" src="https://via.placeholder.com/100/0000ff" alt="Image 4" onmouseover="upDate(this)" onmouseout="undo()">
+
+    <script src="script.js"></script>
+</body>
+</html>
