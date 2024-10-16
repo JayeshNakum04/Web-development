@@ -1,0 +1,111 @@
+/* Base styles */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* A more modern font */
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4; /* Light background for contrast */
+}
+
+header {
+  text-align: center;
+  margin: 20px 0;
+}
+
+h1 {
+  color: #4a4a4a; /* Darker color for the header */
+  font-size: 2.5rem; /* Increase font size */
+  margin-bottom: 10px;
+}
+
+h2 {
+  color: #333; /* Color for subheadings */
+  margin-top: 20px;
+}
+
+/* Mobile styles (default) */
+main {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  padding: 10px; /* Add some padding around the main content */
+}
+
+div {
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 10px;
+  background-color: #ffffff; /* White background for the figures */
+  transition: transform 0.3s, box-shadow 0.3s; /* Add smooth transition effects */
+}
+
+div:hover {
+  transform: translateY(-5px); /* Lift effect on hover */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Add shadow on hover */
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px; /* Slight rounding of image corners */
+}
+
+/* Tablet view */
+@media all and (min-width: 772px) {
+  main {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  div {
+    border-radius: 50%; /* Circular shape */
+  }
+
+  div:last-child {
+    grid-column: span 2; /* Last figure takes both columns */
+  }
+}
+
+/* Large screen view */
+@media all and (min-width: 992px) {
+  div:nth-child(3n) {
+    grid-column: span 2; /* Every third figure takes both columns */
+  }
+
+  div {
+    border-radius: 0; /* Remove border radius */
+  }
+}
+
+/* Prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto; /* Remove scroll behavior */
+  }
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #222; /* Dark background for dark mode */
+    color: #f0f0f0;
+  }
+
+  div {
+    background-color: #333; /* Dark background for figures */
+    color: #ffeb3b; /* Light color for text */
+    border-color: #555; /* Darker border color */
+  }
+}
+
+/* Additional styles for links */
+footer a {
+  color: #007bff; /* Bootstrap primary color */
+  text-decoration: none; /* Remove underline */
+  font-weight: bold; /* Make it bold */
+}
+
+footer a:hover {
+  text-decoration: underline; /* Underline on hover */
+}
