@@ -1,0 +1,37 @@
+/* Default styling for divs and images */
+div {
+  width: 100%;
+  margin: 10px 0;
+  display: block;
+}
+
+img {
+  width: 100%;
+  max-height: 100%;
+}
+
+/* First media query: Trigger at 772px */
+@media all and (min-width: 772px) {
+  div {
+    width: 45%; /* Adjust div width to 45% of the viewport width */
+    display: inline-block; /* Ensure divs appear next to each other */
+    vertical-align: top;
+  }
+
+  img {
+    max-height: 30vh; /* Adjust the image height to 30% of the viewport height */
+  }
+}
+
+/* Second media query: Trigger at 998px */
+@media all and (min-width: 998px) {
+  div {
+    width: 30%; /* Adjust div width to 30% of the viewport width */
+    display: inline-block; /* Divs appear next to each other */
+    vertical-align: top;
+  }
+
+  img {
+    max-height: 30vh; /* Maintain the image max height at 30% of viewport height */
+  }
+}
