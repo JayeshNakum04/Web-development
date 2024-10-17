@@ -1,0 +1,192 @@
+
+
+.header{
+    height: 55px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(225, 225, 225);
+}
+
+.left_section{
+
+    align-content: center;
+    flex-shrink: 0;
+ 
+}
+.middle_section{
+ 
+    flex: 1;
+    margin-left: 200px;
+    max-width: 600px;
+    display: flex;
+    align-items: center;
+    
+}
+.right_section{
+   align-items: center;
+   display: flex;
+   flex-shrink: 0;    
+    width: 350px;
+    justify-content: space-between;       
+}
+
+.hamberger_menu{
+margin-left: 24px;
+margin-right: 20px;
+height: 24px;
+
+
+}
+.tube_logo{
+height: 24px;
+}
+
+.search_button{
+height: 38px;
+width: 66px;
+background-color: rgb(240, 240, 240);
+border-width: 1px;
+border-color: rgb(192, 192, 192); 
+border-style: solid;
+box-shadow: inset 1px 2px 3px rgba(0, 0, 0, 0.05);
+margin-left: -1;
+margin-right: 4px;
+
+}
+.searchicon{
+    height: 25px;
+}
+
+
+
+.search_bar{
+    flex: 1;
+    height: 34px;
+    font-size: 16px;
+    border-width: 1px;
+    border-color: rgb(192, 192, 192);
+    border-style: solid;
+    border-radius: 2px;
+    box-shadow: inset 1px 2px 3px rgba(0, 0, 0, 0.05);
+    width: 0px;
+}
+
+.mic_button{
+    height: 38px;
+    width: 40px;
+    background-color: rgb(245, 245, 245);
+    border-width: 1px;
+    border-color: rgb(192, 192, 192); 
+    border-style: solid;
+    border: none;
+    border-radius: 20px;
+    
+    }
+
+.micicon{
+height: 25px;
+}
+
+
+.search_bar::placeholder{
+font-family: arial;
+font-size: 16px;
+padding-left: 16px;
+}
+
+.addvideo,.notification,.menu2{
+height: 24px;
+margin: 0px;
+}
+
+.addvideo{
+height: 45px;
+margin-left: 5px;
+}
+
+.notify_container{
+    position: relative;
+  }
+
+  .notification_numbers{
+    position: absolute;
+    background-color: red;
+    color: white;
+    font-family: Roboto,arial;
+    font-size: 11px;
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    top:-2px;
+    right:-5px;
+    border-radius: 12px;
+    border-color: rgb(77, 77, 77);
+    border-style: solid;
+    border-width: 1px;
+ 
+  }
+
+  .search_button, .mic_button, 
+  .upload-icon-container
+  {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .menu-container,.notify_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  .search_button .tooltip, 
+  .mic_button .tooltip,
+  .upload-icon-container .tooltip,
+  .menu-container .tooltip,
+  .notify_container .tooltip {
+    position: absolute;
+    background-color: grey;
+    color: white;
+    padding:4px;
+    padding-right: 8px;
+    padding-left: 8px;
+    border-radius: 2px;
+    font-size: 12px;
+    bottom:-30px;
+    opacity: 0;
+    transition: opacity 0.15s;
+    pointer-events: none;
+    white-space: nowrap;
+    font-family: Roboto, arial;
+  }
+
+  .search_button:hover .tooltip,
+  .mic_button:hover .tooltip,
+  .upload-icon-container:hover .tooltip,
+  .menu-container:hover .tooltip,
+  .notify_container:hover .tooltip 
+ {
+    opacity: 1;
+  }
+  .upload-icon-container .tooltip{
+    bottom: -25px;
+  }
+  .menu-container .tooltip{
+    bottom: -20px;
+  }
+  .notify_container .tooltip{
+    bottom: -35px;
+  }
+ 
