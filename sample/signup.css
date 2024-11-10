@@ -1,0 +1,125 @@
+/* styles.css */
+
+/* General body styling */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4; /* Lightened background for a fresher look */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+/* Container for the authentication form */
+.auth-container {
+  background-color: #ffffff;
+  width: 100%;
+  max-width: 420px; /* Slightly wider for better readability */
+  padding: 30px;
+  border-radius: 12px; /* Rounder corners for a softer, modern look */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Increased shadow for better depth */
+  text-align: center;
+  transition: all 0.3s ease; /* Smooth transition on hover */
+}
+
+.auth-container:hover {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* More shadow on hover */
+}
+
+/* Header Styling */
+.auth-container h2 {
+  color: #333;
+  margin-bottom: 25px;
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: 0.5px; /* Subtle spacing for a cleaner appearance */
+}
+
+/* Input fields styling */
+input[type="text"], input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  margin: 15px 0;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
+  color: #333;
+  background-color: #fafafa;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Input focus effect */
+input[type="text"]:focus, input[type="password"]:focus {
+  border-color: #666;
+  background-color: #fff;
+  outline: none;
+}
+
+/* Button styling */
+button {
+  width: 100%;
+  padding: 14px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Button hover effect */
+button:hover {
+  background-color: #555;
+  transform: translateY(-2px); /* Slightly lift the button on hover */
+}
+
+/* Error message styling */
+#error-message {
+  color: #ff4d4d; /* Brighter red for better visibility */
+  font-size: 14px;
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+/* Link styling */
+a {
+  color: #333;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #666; /* Lighter color on hover for a subtle effect */
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  body {
+      padding: 15px;
+  }
+
+  .auth-container {
+      width: 100%;
+      padding: 20px;
+  }
+
+  h2 {
+      font-size: 24px;
+  }
+
+  input[type="text"], input[type="password"] {
+      font-size: 15px;
+  }
+
+  button {
+      font-size: 15px;
+  }
+}
