@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard - Attendance Reports</title>
+
+    <!-- Dependencies -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #111;
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+      }
+      h2 {
+        margin-bottom: 20px;
+      }
+      .btn-container {
+        margin-bottom: 20px;
+      }
+      button {
+        background: #fff;
+        color: #111;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s ease;
+        margin: 5px;
+      }
+      button:hover {
+        background: #444;
+        color: #fff;
+      }
+      input {
+        padding: 10px;
+        width: 300px;
+        border: none;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+      table {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        border-collapse: collapse;
+        background: #222;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      th,
+      td {
+        padding: 10px;
+        text-align: center;
+        border-bottom: 1px solid #444;
+      }
+      th {
+        background: #333;
+      }
+      td button {
+        background: #ff4444;
+        color: white;
+        padding: 5px 10px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+      td button:hover {
+        background: #cc0000;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Admin Dashboard - Attendance Reports</h2>
+
+    <!-- Search Input -->
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Search by User ID..."
+      onkeyup="filterTable()"
+    />
+
+    <div class="btn-container">
+      <button onclick="exportTableToCSV()">Export to CSV</button>
+      <button onclick="exportToExcel()">Export to Excel</button>
+    </div>
+
+    <table id="attendanceTable">
+      <thead>
+        <tr>
+          <th>Student ID</th>
+          <th>Name</th>
+          <th>Timestamp</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in records %}
+        <tr id="row-{{ row[0] }}">
+          <td>{{ row[1] }}</td>
+          <td>{{ row[2] }}</td>
+          <td>{{ row[3] }}</td>
+          <td>
+            <button onclick="deleteEntry({{ row[0] }})">Delete</button>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <script>
+      function exportTableToCSV() {
+        let csv = [];
+        let rows = document.querySelectorAll("#attendanceTable tr");
+
+        rows.forEach((row) => {
+          let cols = row.querySelectorAll("td, th");
+          let rowData = [];
+
+          cols.forEach((col, index) => {
+            if (index !== cols.length - 1) {
+              rowData.push(col.innerText);
+            }
+          });
+
+          csv.push(rowData.join(","));
+        });
+
+        let csvContent = "data:text/csv;charset=utf-8," + csv.join("\n");
+        let encodedUri = encodeURI(csvContent);
+        let link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", "attendance_report.csv");
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+
+      function exportToExcel() {
+        let table = document.getElementById("attendanceTable").cloneNode(true);
+        let rows = table.querySelectorAll("tr");
+
+        rows.forEach((row) => {
+          let lastCell = row.lastElementChild;
+          if (lastCell) row.removeChild(lastCell);
+        });
+
+        let wb = XLSX.utils.table_to_book(table, { sheet: "Attendance" });
+        XLSX.writeFile(wb, "attendance_report.xlsx");
+      }
+
+      function deleteEntry(userId) {
+        fetch(`/delete/${userId}`, { method: "POST" }).then(() =>
+          location.reload()
+        );
+      }
+
+      // Function to filter table rows based on search input
+      function filterTable() {
+        let input = document.getElementById("searchInput").value.toLowerCase();
+        let table = document.getElementById("attendanceTable");
+        let rows = table.getElementsByTagName("tr");
+
+        for (let i = 1; i < rows.length; i++) {
+          let userId = rows[i].getElementsByTagName("td")[0]; // User ID Column
+          if (userId) {
+            let textValue = userId.textContent || userId.innerText;
+            if (textValue.toLowerCase().includes(input)) {
+              rows[i].style.display = "";
+            } else {
+              rows[i].style.display = "none";
+            }
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

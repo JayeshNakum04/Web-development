@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QR Attendance System</title>
+    <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #111;
+        color: #fff;
+        text-align: center;
+        margin: 0;
+        padding: 20px;
+      }
+      h2 {
+        margin-bottom: 20px;
+      }
+      video {
+        border: 2px solid #fff;
+        border-radius: 10px;
+        width: 90%;
+        max-width: 400px;
+        margin-top: 10px;
+      }
+      button {
+        background: #fff;
+        color: #111;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s ease;
+      }
+      button:hover {
+        background: #444;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Scan QR Code to Mark Attendance</h2>
+    <video id="video" autoplay></video>
+    <canvas id="canvas" hidden></canvas>
+
+    <script>
+      const video = document.getElementById("video");
+      const canvas = document.getElementById("canvas");
+      const context = canvas.getContext("2d");
+
+      navigator.mediaDevices
+        .getUserMedia({ video: { facingMode: "environment" } })
+        .then((stream) => {
+          video.srcObject = stream;
+        });
+
+      setInterval(() => {
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+        let imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+
+        let qrCode = jsQR(imageData.data, imageData.width, imageData.height);
+        if (qrCode) {
+          fetch("/mark_attendance", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ qr_data: qrCode.data }),
+          })
+            .then((response) => response.json())
+            .then((data) => alert(data.message));
+          console.log("QR Code Detected:", qrCode.data);
+        }
+      }, 2000);
+    </script>
+  </body>
+</html>
